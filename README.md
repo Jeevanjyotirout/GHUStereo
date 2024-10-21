@@ -14,7 +14,7 @@ and Efficient Stereo Matching</h1>
 </p>
 
 
-# Performance on KITTI raw dataset (46 FPS for the resolution of 380 x 1248)
+# Performance of GHUStereo-8-nce on KITTI raw dataset (46 FPS for the resolution of 380 x 1248)
 <p align="center">
   <img width="600" height="300" src="./imgs/output.gif" data-zoomable>
 </p>
