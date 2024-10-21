@@ -107,7 +107,7 @@ python train_kitti.py --logdir ./checkpoints/kitti/ --loadckpt ./checkpoints/sce
 
 ### Pretrained Model
 Download the trained weights folder and extract it in the root directory.
-* [GHUStereo](https://drive.google.com/drive/folders/1VcfEpO9Mv0Bt7Xdvckii4SAavW8cL1_d)
+* [GHUStereo](https://drive.google.com/file/d/18KDTgUr2jGDQUQaf1Gbm5LJ1sCXHbskt/view?usp=drive_link)
 
 Generate disparity images of KITTI test set,
 ```
@@ -139,4 +139,4 @@ If you find this project helpful in your research, welcome to cite the paper.
 
 # Acknowledgements
 
-Thanks to open source works: [CoEx](https://github.com/antabangun/coex), [ACVNet](https://github.com/gangweiX/Fast-ACVNet), [CGI-Stereo](https://github.com/gangweiX/CGI-Stereo), [OpenStereo](https://github.com/XiandaGuo/OpenStereo/tree/v2)>.
+Thanks to open source works: [CoEx](https://github.com/antabangun/coex), [ACVNet](https://github.com/gangweiX/Fast-ACVNet), [CGI-Stereo](https://github.com/gangweiX/CGI-Stereo), [OpenStereo](https://github.com/XiandaGuo/OpenStereo/tree/v2).
