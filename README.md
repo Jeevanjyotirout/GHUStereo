@@ -30,7 +30,7 @@ The results on SceneFlow
 <p align="center"><img width=90% src="imgs/performance.png"></p>
 
 
-The results on KITTI dataset using RTX 3090.
+The results on KITTI dataset using RTX 4070.
 | Method | KITTI 2012 <br> (3-noc) | KITTI 2012 <br> (3-all) | KITTI 2015 <br> (D1-bg) | KITTI 2015 <br> (D1-fg) | KITTI 2015 <br> (D1-all) |Runtime <br> (ms)|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | LightStereo-S | 1.88 % | 2.34 % | 2.00 % | 3.80 % | 2.30 % | 17 |
@@ -51,22 +51,12 @@ The results on KITTI dataset using RTX 3090.
 | **GHUStereo-8-gwce**| 1.71 % | 2.08 % | 1.88 % | 3.34 % | 2.12 % | 21 |
 | **GHUStereo-4-gwce**| **1.21 %** | **1.61 %** | 1.50 % | 3.64 % | 1.85 % | 36 |
 
-The results on SceneFlow dataset based on the selected cost volumes.
-| Group-wise <br> correlation | Norm <br> correlation  | Concatenation | Group-wise <br> substraction |EPE[px] | D1-all[%] |Runtime <br> (ms)|
-|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
-| &check; | &check; |         |         | 0.60 | 2.11 | 67 |
-| &check; |         | &check; |         | 0.59 | 2.05 | 75 |
-| &check; |         |         | &check; | 0.59 | 2.06 | 89 |
-|         | &check; | &check; |         | 0.72 | 2.59 | 60 |
-|         | &check; |         | &check; | 0.65 | 2.28 | 74 |
-|         |         | &check; | &check; | 0.69 | 2.38 | 81 |
-
 # How to use
 
 ## Environment
-* NVIDIA RTX 3090
-* Python 3.8
-* Pytorch 1.12
+* NVIDIA RTX 4070
+* Python 3.11
+* Pytorch 2.4.0
 
 ## Install
 
@@ -85,7 +75,7 @@ pip install scikit-image
 pip install tensorboard
 pip install matplotlib 
 pip install tqdm
-pip install timm==0.5.4
+pip install timm==0.4.12
 ```
 
 ## Data Preparation
@@ -99,27 +89,36 @@ pip install timm==0.5.4
 Use the following command to train GHUStereo on SceneFlow.
 First training,
 ```
-python train_sceneflow.py --logdir ./checkpoints/sceneflow/first/
+python train_sceneflow.py --logdir ./checkpoints/sceneflow/first/ --cv_scale 4 --cv norm_correlation
 ```
 Second training,
 ```
-python train_sceneflow.py --logdir ./checkpoints/sceneflow/second/ --loadckpt ./checkpoints/sceneflow/first/checkpoint_000059.ckpt
+python train_sceneflow.py --logdir ./checkpoints/sceneflow/second/ --loadckpt ./checkpoints/sceneflow/first/checkpoint_000059.ckpt --cv_scale 4 --cv norm_correlation
 ```
 
 Use the following command to finetune GHUStereo on KITTI using the pretrained model on SceneFlow,
 ```
-python train_kitti.py --logdir ./checkpoints/kitti/ --loadckpt ./checkpoints/sceneflow/second/checkpoint_000059.ckpt
+python train_kitti.py --logdir ./checkpoints/kitti/ --loadckpt ./checkpoints/sceneflow/second/checkpoint_000059.ckpt --cv_scale 4 --cv norm_correlation
 ```
 
 
 ## Evaluation on SceneFlow and KITTI
 
 ### Pretrained Model
+Download the trained weights folder and extract it in the root directory.
 * [GHUStereo](https://drive.google.com/drive/folders/1VcfEpO9Mv0Bt7Xdvckii4SAavW8cL1_d)
 
 Generate disparity images of KITTI test set,
 ```
 python save_disp.py
+```
+
+Generalization on KITTI dataset,
+```
+python test_kitti.py --loadckpt ./checkpoint/ghustereo4_efficientnet_backbone_gwc.ckpt --cv_scale 4 --cv gwc
+python test_kitti.py --loadckpt ./checkpoint/ghustereo8_efficientnet_backbone_gwc.ckpt --cv_scale 8 --cv gwc
+python test_kitti.py --loadckpt ./checkpoint/ghustereo4_efficientnet_backbone_nc.ckpt --cv_scale 4 --cv norm_correlation
+python test_kitti.py --loadckpt ./checkpoint/ghustereo8_efficientnet_backbone_nc.ckpt --cv_scale 8 --cv norm_correlation
 ```
 
 # Citation
@@ -128,15 +127,15 @@ If you find this project helpful in your research, welcome to cite the paper.
 
 ```
 @misc{tahmasebi2024dcvsmnet,
-      title={GHUStereo: Double Cost Volume Stereo Matching Network}, 
+      title={GHUStereo: Guided Hourglass Up-Sampling for Real-Time and Efficient Stereo Matching}, 
       author={Mahmoud Tahmasebi and Saif Huq and Kevin Meehan and Marion McAfee},
-      year={2024},
-      eprint={2402.16473},
-      archivePrefix={arXiv},
+      year={TBD},
+      eprint={TBD},
+      archivePrefix={TBD},
       primaryClass={cs.CV}
 }
 ```
 
 # Acknowledgements
 
-Thanks to open source works: [CoEx](https://github.com/antabangun/coex), [ACVNet](https://github.com/gangweiX/Fast-ACVNet), [CGI-Stereo](https://github.com/gangweiX/CGI-Stereo).
+Thanks to open source works: [CoEx](https://github.com/antabangun/coex), [ACVNet](https://github.com/gangweiX/Fast-ACVNet), [CGI-Stereo](https://github.com/gangweiX/CGI-Stereo), [OpenStereo](https://github.com/XiandaGuo/OpenStereo/tree/v2)>.
