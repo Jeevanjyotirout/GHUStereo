@@ -14,7 +14,7 @@ and Efficient Stereo Matching</h1>
 </p>
 
 
-# Performance on KITTI raw dataset
+# Performance on KITTI raw dataset (46 FPS for the resolution of 380 x 1248)
 <p align="center">
   <img width="600" height="300" src="./imgs/output.gif" data-zoomable>
 </p>
@@ -33,15 +33,23 @@ The results on SceneFlow
 The results on KITTI dataset using RTX 3090.
 | Method | KITTI 2012 <br> (3-noc) | KITTI 2012 <br> (3-all) | KITTI 2015 <br> (D1-bg) | KITTI 2015 <br> (D1-fg) | KITTI 2015 <br> (D1-all) |Runtime <br> (ms)|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| LightStereo-S | 1.88 % | 2.34 % | 2.00 % | 3.80 % | 2.30 % | 17 |
+| RTSMNet | - | - | 3.44 % | 6.08 % | 3.88 % | 19 |
+| HITNet | 1.41 % | 1.89 % | 1.74 % | 3.20 %| 1.98 % | 20 |
 | CGI-Stereo | 1.41 % | 1.76 % | 1.66 % | 3.38 % | 1.94 % | 29 |
 | CoEx | 1.55 % | 1.93 % | 1.79 % | 3.82 % | 2.13 % | 33 |
+| LightStereo-L | 1.55 % | 1.87 % | 1.78 % | **2.64 %** | 1.93 % | 34 |
 | BGNet+ | 1.62 % | 2.03 % | 1.81 % | 4.09 % | 2.19 % | 35 |
 | Fast-ACVNet+ | 1.45 % | 1.85 % | 1.70 % | 3.53 % | 2.01 % | 45 |
-| HITNet | 1.41 % | 1.89 % | 1.74 % | **3.20 %** | 1.98 % | 54 |
+| RT-IGEV++ | 1.29 % | 1.68 % | **1.48 %** | 3.37 % | 1.79 % | 48 |
 | DispNetC | 4.11 % | 4.65 % | 2.21 % | 6.16 % | 4.43 % | 60 |
 | AANet | 1.91 % | 2.42 % | 1.99 % | 5.39 % | 2.55 % | 62 |
+| DCVSMNet | 1.30 % | 1.67 % | 1.60 % | 3.33 % | 1.89 % | 67 |
 | JDCNet | 1.64 % | 2.11 % | 1.91 % | 4.47 % | 2.33 % | 80 |
-| **GHUStereo**| **1.30 %** | **1.67 %** | **1.60 %** | 3.33 % | **1.89 %** | 67 |
+| **GHUStereo-8-nce**| 1.74 % | 2.13 % | 1.92 % | 3.79 % | 2.23 % | 19 |
+| **GHUStereo-4-nce**| 1.27 % | 1.67 % | **1.48 %** | 3.21 % | **1.77 %** | 34 |
+| **GHUStereo-8-gwce**| 1.71 % | 2.08 % | 1.88 % | 3.34 % | 2.12 % | 21 |
+| **GHUStereo-4-gwce**| **1.21 %** | **1.61 %** | 1.50 % | 3.64 % | 1.85 % | 36 |
 
 The results on SceneFlow dataset based on the selected cost volumes.
 | Group-wise <br> correlation | Norm <br> correlation  | Concatenation | Group-wise <br> substraction |EPE[px] | D1-all[%] |Runtime <br> (ms)|
