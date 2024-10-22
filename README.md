@@ -64,7 +64,7 @@ The results on KITTI dataset using RTX 4070.
 ### Create a virtual environment and activate it.
 
 ```
-conda create -n GHUStereo python=3.8
+conda create -n GHUStereo python=3.11
 conda activate GHUStereo
 ```
 ### Dependencies
