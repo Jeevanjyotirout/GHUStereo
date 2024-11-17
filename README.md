@@ -85,6 +85,16 @@ pip install timm==0.4.12
 * [KITTI 2015](http://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo)
 * [Middlebury](https://vision.middlebury.edu/stereo/submit3/)
 
+The structure of /datasets directory 
+
+<p align="center">
+  <a href="">
+    <img src="https://github.com/M2219/GHUStereo/blob/main/imgs/dataset_tree.png" alt="Logo" width="90%">
+  </a>
+</p>
+
+
+
 ## Train
 
 Use the following command to train GHUStereo on SceneFlow.
