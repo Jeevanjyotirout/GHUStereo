@@ -87,13 +87,38 @@ pip install timm==0.4.12
 
 The structure of /datasets directory 
 
-<p align="center">
-  <a href="">
-    <img src="https://github.com/M2219/GHUStereo/blob/main/imgs/dataset_tree.png" alt="Logo" width="90%">
-  </a>
-</p>
-
-
+```shell
+/datasets/
+|-- ETH3D
+|   |-- two_view_training
+|   `-- two_view_training_gt
+|-- Middlebury
+|   |-- Eval3_GT
+|   |-- MiddEval3-GT0-H
+|   |-- MiddEval3-GT0-Q
+|   |-- MiddEval3-data-H
+|   |-- MiddEval3-data-Q
+|   |-- testH
+|   `-- trainingH
+|-- SceneFlow
+|   `-- flyingthings3d
+|-- kitti_2012
+|   |-- testing
+|   `-- training
+|-- kitti_2015
+|   |-- testing
+|   `-- training
+|-- kittiraw2
+|   |-- image_00
+|   |-- image_01
+|   |-- image_02
+|   |-- image_03
+|   |-- oxts
+|   `-- velodyne_points
+`-- vkitti
+    |-- vkitti_depth
+    `-- vkitti_rgb
+```
 
 ## Train
 
