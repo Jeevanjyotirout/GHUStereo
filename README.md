@@ -16,7 +16,7 @@ and Efficient Stereo Matching</h1>
 
 # Performance of GHUStereo-8-gwcm on KITTI raw dataset (90 FPS for the resolution of 380 x 1248 on RTX 4070S and fp16)
 <p align="center">
-  <img width="600" height="300" src="./imgs/GHUStereo.gif" data-zoomable>
+  <img width="600" height="600" src="./imgs/GHUStereo.gif" data-zoomable>
 </p>
 
 Performance in rain and fog
