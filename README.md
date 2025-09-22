@@ -14,23 +14,19 @@ and Efficient Stereo Matching</h1>
 </p>
 
 
-# Performance of GHUStereo-8-nce on KITTI raw dataset (46 FPS for the resolution of 380 x 1248 on RTX 4070)
+# Performance of GHUStereo-8-gwcm on KITTI raw dataset (90 FPS for the resolution of 380 x 1248 on RTX 4070S and fp16)
 <p align="center">
-  <img width="600" height="300" src="./imgs/output.gif" data-zoomable>
+  <img width="600" height="300" src="./imgs/GHUStereo.gif" data-zoomable>
 </p>
 
-Performance on Jetson AGX Orin for low resolution input
+Performance in rain and fog
 <p align="center">
-  <img width="400" height="400" src="./imgs/myimage2.gif" data-zoomable>
+  <img width="600" height="400" src="./imgs/fog_rain.gif" data-zoomable>
 </p>
 
 # SOTA results.
-The results on SceneFlow
 
-<p align="center"><img width=90% src="imgs/performance.png"></p>
-
-
-The results on KITTI dataset using RTX 4070.
+Results on KITTI dataset using RTX 4070.
 | Method | KITTI 2012 <br> (3-noc) | KITTI 2012 <br> (3-all) | KITTI 2015 <br> (D1-bg) | KITTI 2015 <br> (D1-fg) | KITTI 2015 <br> (D1-all) |Runtime <br> (ms)|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | LightStereo-S | 1.88 % | 2.34 % | 2.00 % | 3.80 % | 2.30 % | 17 |
@@ -141,8 +137,8 @@ python train_kitti.py --logdir ./checkpoints/kitti/ --loadckpt ./checkpoints/sce
 ## Evaluation on SceneFlow and KITTI
 
 ### Pretrained Model
-Download the trained weights folder and extract it in the root directory.
-* [GHUStereo](https://drive.google.com/file/d/18KDTgUr2jGDQUQaf1Gbm5LJ1sCXHbskt/view?usp=drive_link)
+Download the trained weights folder and extract it in the root directory and rename it to ```checkpoint```.
+* [GHUStereo](https://drive.google.com/file/d/1ju-QzBwYNMhmR28X9P0qeZGkPlQXWEx5/view?usp=sharing)
 
 Generate disparity images of KITTI test set,
 ```
@@ -157,12 +153,32 @@ python test_kitti.py --loadckpt ./checkpoint/ghustereo4_efficientnet_backbone_nc
 python test_kitti.py --loadckpt ./checkpoint/ghustereo8_efficientnet_backbone_nc.ckpt --cv_scale 8 --cv norm_correlation
 ```
 
+### ROS2 inference on Jetson 
+
+Note 1: The current settings are optimized for KITTI resolution. To use your own dataset, update the ONNX configuration accordingly and set the correct dataset path in the launch file.
+
+Note 2: Set the correct path for TensorRT in CMakeLists.txt.
+
+```
+python onnx_transformed.py
+trtexec --onnx=StereoModel.onnx --useCudaGraph --saveEngine=StereoModel.plan --fp16 --verbose
+cp StereoModel.plan /tmp
+mkdir kitti_publisher/src
+cp kitti_publisher kitti_publisher/src
+cd kitti_publisher
+colcon build
+source install/setup.bash
+ros2 launch kitti_publisher kitti_publisher_cuda_node.launch.py 
+```
+
+Note 3:  Similarly the model can be used for inference on virtual kitti dataset
+
 # Citation
 
 If you find this project helpful in your research, welcome to cite the paper.
 
 ```
-@misc{tahmasebi2024dcvsmnet,
+@misc{ghustereo,
       title={GHUStereo: Guided Hourglass Up-Sampling for Real-Time and Efficient Stereo Matching}, 
       author={Mahmoud Tahmasebi and Saif Huq and Kevin Meehan and Marion McAfee},
       year={TBD},
