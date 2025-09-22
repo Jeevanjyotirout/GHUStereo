@@ -27,6 +27,12 @@ Note: refer to the paper for evaluation results on Jetson AGX Orin
   <img width="600" height="600" src="./imgs/fog_rain.gif" data-zoomable>
 </p>
 
+# Performance using OAK-D LR camera
+<p align="center">
+  <img width="600" height="600" src="./imgs/ghustereo_oak.gif" data-zoomable>
+</p>
+
+
 # SOTA results.
 
 Results on KITTI dataset using RTX 4070S.
