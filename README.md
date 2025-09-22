@@ -19,7 +19,7 @@ and Efficient Stereo Matching</h1>
   <img width="600" height="600" src="./imgs/GHUStereo.gif" data-zoomable>
 </p>
 
-Performance in rain and fog
+# Performance in fog and rain
 <p align="center">
   <img width="600" height="600" src="./imgs/fog_rain.gif" data-zoomable>
 </p>
