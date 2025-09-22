@@ -21,7 +21,7 @@ and Efficient Stereo Matching</h1>
 
 Performance in rain and fog
 <p align="center">
-  <img width="600" height="400" src="./imgs/fog_rain.gif" data-zoomable>
+  <img width="600" height="600" src="./imgs/fog_rain.gif" data-zoomable>
 </p>
 
 # SOTA results.
