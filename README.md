@@ -112,8 +112,8 @@ The structure of /datasets directory
 |   |-- oxts
 |   `-- velodyne_points
 `-- vkitti
-    |-- vkitti_depth
-    `-- vkitti_rgb
+    |-- depth
+    `-- rgb
 ```
 
 ## Train
