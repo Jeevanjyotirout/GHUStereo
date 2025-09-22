@@ -174,7 +174,7 @@ source install/setup.bash
 ros2 launch kitti_publisher kitti_publisher_cuda_node.launch.py 
 ```
 
-Note 3:  Similarly the model can be used for inference on virtual kitti dataset
+Note 3:  Similarly the model can be used for inference on virtual kitti dataset using ```virtual_kitti_publisher``` package
 
 # Citation
 
