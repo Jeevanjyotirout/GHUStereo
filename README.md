@@ -15,6 +15,9 @@ and Efficient Stereo Matching</h1>
 
 
 # Performance of GHUStereo-8-gwcm on KITTI raw dataset (90 FPS for the resolution of 380 x 1248 on RTX 4070S and fp16)
+ 
+Note: refer to the paper for evaluation results on Jetson AGX Orin
+
 <p align="center">
   <img width="600" height="600" src="./imgs/GHUStereo.gif" data-zoomable>
 </p>
@@ -26,7 +29,7 @@ and Efficient Stereo Matching</h1>
 
 # SOTA results.
 
-Results on KITTI dataset using RTX 4070.
+Results on KITTI dataset using RTX 4070S.
 | Method | KITTI 2012 <br> (3-noc) | KITTI 2012 <br> (3-all) | KITTI 2015 <br> (D1-bg) | KITTI 2015 <br> (D1-fg) | KITTI 2015 <br> (D1-all) |Runtime <br> (ms)|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | LightStereo-S | 1.88 % | 2.34 % | 2.00 % | 3.80 % | 2.30 % | 17 |
