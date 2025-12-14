@@ -4,7 +4,7 @@ and Efficient Stereo Matching</h1>
   <p align="center">
     Mahmoud Tahmasebi* (mahmoud.tahmasebi@research.atu.ie), Saif Huq, Kevin Meehan, Marion McAfee
   </p>
-  <h3 align="center"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5534120">Paper</a>
+  <h3 align="center"><a href="">Paper</a>
   <div align="center"></div>
 </p>
 <p align="center">
